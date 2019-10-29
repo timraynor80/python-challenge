@@ -4,6 +4,7 @@ filename = 'budget_data.csv'
 
 date = []
 totals = []
+change_list = []
 
 with open(filename) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -11,7 +12,6 @@ with open(filename) as csvfile:
     for row in csvfile:
         date.append(row.split(",")[0])
         totals.append(row.split(",")[1])
-    print(len(date))
-    print(len(totals))
-    print(totals)
-    print(date)
+        for i in range(0, len(totals)):
+            totals[i] = int(totals[i])
+print(totals) 
