@@ -9,6 +9,7 @@ difference = []
 Counter = 0
 tempTotalRow = 0
 currentTotalRow = 0
+TotalProfits = 0
 
 with open(filename, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -20,9 +21,10 @@ with open(filename, newline='') as csvfile:
         date.append(row[0])
         totals.append(row[1])
         tempTotalRow = currentTotalRow
+        TotalProfits = TotalProfits + int(currentTotalRow)
         # for i in range(0, (len(totals))):
         #     totals[i] = int(totals[i]) 
-    totalAvg = mean(difference)    
-print(len(totals))
-print(len(date))
-print(totalAvg)
+    totalAvg = mean(difference)
+print("Total Months: " + str(len(totals)))
+print("Total Profits/Losses: " + str(TotalProfits))
+print("Average Change: " + str(totalAvg))
