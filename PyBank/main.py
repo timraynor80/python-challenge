@@ -1,17 +1,28 @@
 import os
 import csv
+from statistics import mean
 filename = 'budget_data.csv'
 
 date = []
 totals = []
-change_list = []
+difference = []
+Counter = 0
+tempTotalRow = 0
+currentTotalRow = 0
 
-with open(filename) as csvfile:
+with open(filename, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     csv_header = next(csvreader)
-    for row in csvfile:
-        date.append(row.split(",")[0])
-        totals.append(row.split(",")[1])
-        for i in range(0, len(totals)):
-            totals[i] = int(totals[i])
-print(totals) 
+    for row in csvreader:
+        currentTotalRow = row[1]
+        if int(tempTotalRow) > 0:
+            difference.append(int(currentTotalRow) - int(tempTotalRow))
+        date.append(row[0])
+        totals.append(row[1])
+        tempTotalRow = currentTotalRow
+        # for i in range(0, (len(totals))):
+        #     totals[i] = int(totals[i]) 
+    totalAvg = mean(difference)    
+print(len(totals))
+print(len(date))
+print(totalAvg)
