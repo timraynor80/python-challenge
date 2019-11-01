@@ -26,13 +26,19 @@ with open(BudgetData, newline='') as csvfile:
     print("Total Months: " + str(len(Date)))
 
     TotalProfits = sum(ProfLoss)
+    TotalProfits = '${:,.2f}'.format(TotalProfits)
     print("Total Profits/Losses: " + str(TotalProfits))
 
     AverageChange = int(sum(Difference)) / (int(len(Difference)) - 1)
+    AverageChange = '${:,.2f}'.format(AverageChange)
     print("Average Change: " + str(AverageChange))
 
     GreatestMonthIncreaseIndex = Difference.index(max(Difference))
-    print("Greatest Increase in Profits: " + Date[GreatestMonthIncreaseIndex] + " (" + str(Difference[GreatestMonthIncreaseIndex]) + ")")
+    GreatestIncrease = Difference[GreatestMonthIncreaseIndex]
+    GreatestIncrease = '${:,.2f}'.format(GreatestIncrease)
+    print("Greatest Increase in Profits: " + Date[GreatestMonthIncreaseIndex] + " (" + GreatestIncrease + ")")
   
     GreatestMonthDecreaseIndex = Difference.index(min(Difference))
-    print("Greatest Decrease in Profits: " + Date[GreatestMonthDecreaseIndex] + " (" + str(Difference[GreatestMonthDecreaseIndex]) + ")")
+    GreatestDecrease = Difference[GreatestMonthDecreaseIndex]
+    GreatestDecrease = '${:,.2f}'.format(GreatestDecrease)
+    print("Greatest Decrease in Profits: " + Date[GreatestMonthDecreaseIndex] + " (" + GreatestDecrease + ")")
