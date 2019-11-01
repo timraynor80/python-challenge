@@ -23,31 +23,31 @@ with open(BudgetData, newline='') as csvfile:
         Difference.append(int(CurMoValue) - int(PrevMoValue))
         PrevMoValue = CurMoValue
 
-    f = open("output.txt", "w") 
+    output = open("output.txt", "w") 
 
-    print("Total Months: " + str(len(Date)), file=f)
+    print("Total Months: " + str(len(Date)), file=output)
     print("Total Months: " + str(len(Date)))
 
     TotalProfits = sum(ProfLoss)
     TotalProfits = '${:,.2f}'.format(TotalProfits)
-    print("Total Profits/Losses: " + str(TotalProfits), file=f)
+    print("Total Profits/Losses: " + str(TotalProfits), file=output)
     print("Total Profits/Losses: " + str(TotalProfits))
 
     AverageChange = int(sum(Difference)) / (int(len(Difference)) - 1)
     AverageChange = '${:,.2f}'.format(AverageChange)
-    print("Average Change: " + str(AverageChange), file=f)
+    print("Average Change: " + str(AverageChange), file=output)
     print("Average Change: " + str(AverageChange))
 
     GreatestMonthIncreaseIndex = Difference.index(max(Difference))
     GreatestIncrease = Difference[GreatestMonthIncreaseIndex]
     GreatestIncrease = '${:,.2f}'.format(GreatestIncrease)
-    print("Greatest Increase in Profits: " + Date[GreatestMonthIncreaseIndex] + " (" + GreatestIncrease + ")", file=f)
+    print("Greatest Increase in Profits: " + Date[GreatestMonthIncreaseIndex] + " (" + GreatestIncrease + ")", file=output)
     print("Greatest Increase in Profits: " + Date[GreatestMonthIncreaseIndex] + " (" + GreatestIncrease + ")")
   
     GreatestMonthDecreaseIndex = Difference.index(min(Difference))
     GreatestDecrease = Difference[GreatestMonthDecreaseIndex]
     GreatestDecrease = '${:,.2f}'.format(GreatestDecrease)
-    print("Greatest Decrease in Profits: " + Date[GreatestMonthDecreaseIndex] + " (" + GreatestDecrease + ")", file=f)
+    print("Greatest Decrease in Profits: " + Date[GreatestMonthDecreaseIndex] + " (" + GreatestDecrease + ")", file=output)
     print("Greatest Decrease in Profits: " + Date[GreatestMonthDecreaseIndex] + " (" + GreatestDecrease + ")")
 
-    f.close()
+    output.close()
