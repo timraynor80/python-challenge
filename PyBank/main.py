@@ -15,6 +15,7 @@ with open(filename, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     csv_header = next(csvreader)
     for row in csvreader:
+        maxTotal = max(row[1])
         currentTotalRow = row[1]
         if int(tempTotalRow) > 0:
             difference.append(int(currentTotalRow) - int(tempTotalRow))
@@ -22,9 +23,10 @@ with open(filename, newline='') as csvfile:
         totals.append(row[1])
         tempTotalRow = currentTotalRow
         TotalProfits = TotalProfits + int(currentTotalRow)
-        # for i in range(0, (len(totals))):
-        #     totals[i] = int(totals[i]) 
+    print(max(totals))
     totalAvg = mean(difference)
+
 print("Total Months: " + str(len(totals)))
 print("Total Profits/Losses: " + str(TotalProfits))
 print("Average Change: " + str(totalAvg))
+#need to convert average change to be currency
