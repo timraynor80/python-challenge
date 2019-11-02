@@ -57,3 +57,5 @@ with open(ElectionData, newline='') as csvfile:
     print("------------------------------", file=output)
     print(f'Winner: {Winner(VoteFor)}')
     print("------------------------------")
+
+    output.close()
